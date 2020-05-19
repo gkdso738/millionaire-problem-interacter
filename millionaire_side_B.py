@@ -12,7 +12,7 @@ def compute_result(x,p,bit_ln,mode):
     res = []
     if mode == 1:
         for i in range(bit_ln):
-            if bit_arr[i] != bit_rev:
+            if bit_arr[i] != 0:
                 u = random.randint(3,p-3)
                 v = random.randint(3,p-3)
                 res.append([u * u % p, v * v % p])
@@ -56,6 +56,7 @@ if mode == 1:
     bit_ln = get_int("Please enter maximum bit length (max 2000): ", 1, 2000)
     x = get_int("Please enter your number: ", 0, (2**bit_ln)-1)
     res = compute_result(x,p,bit_ln,1)
+    random.shuffle(res)
     print_result(res)
 
 if mode == 2:
@@ -71,4 +72,5 @@ if mode == 2:
     for i in range(len(st)):
         x = x * 256 + ord(st[i])
     res = compute_result(x,p,bit_ln,2)
+    random.shuffle(res)
     print_result(res)
